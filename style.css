@@ -1,0 +1,93 @@
+body {
+    background-color: #c3e6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+/* Centraliza todo o conteúdo principal */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 450px;
+}
+
+.patinho-container {
+    position: relative;
+    margin-bottom: 30px; /* Afasta o pato do coração */
+    z-index: 10;
+}
+
+#patinho {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    background: none; /* remove fundo azul claro se estiver no gif */
+    border-radius: 10px; /* Opcional, suaviza bordas se precisar */
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.message h1 {
+  color: #fff;
+  font-size: 2.5em;
+  text-shadow: 0 0 10px rgba(255,255,255,0.8);
+  animation: fadeIn 1s forwards 1.5s, glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #fff; }
+  to { text-shadow: 0 0 15px #ff4d4d; }
+}
+
+/* Grid do coração */
+.heart-grid {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 2px;
+    width: 350px;
+    margin-top: 0; /* reduz o espaço extra após o pato */
+    opacity: 1;
+}
+
+/* Corações pequenos */
+.small-heart {
+  width: 15px;
+  height: 15px;
+  background-image: url('heart_icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  image-rendering: pixelated;
+  opacity: 0;
+  transform: scale(0);
+  animation: growAndShow 0.4s forwards;
+  animation-delay: calc(var(--i) * 0.02s); /* atraso suave */
+  
+}
+
+@keyframes growAndShow {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
